@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+
+
+<h2>Add Exercise: </h2>
+
+<form id="Add exercise">
+<fieldset>
+<label>Name: </label>
+    <input type="text" name="name" id="name" size="35"><br>
+
+<label>Reps: </label>
+    <input type="text" name="reps" id="reps" size="35"><br>
+
+<label>Weight: </label>
+    <input type="text" name="weight" id="weight" size="35"><br/><br/>
+
+<label>Date: </label>
+    <input type="date" name="date" id="date" size="35"> <br/> <br/>
+
+<label for="unit">Unit:  </label> 
+    <input type="radio" id="lbs" name="unit" value="1" checked>
+    <label for="lbs">lbs</label>
+    <input type="radio" id="kg" name="unit" value="0">
+    <label for="kg">kg</label> 
+    <br/> <br/>
+    
+    <input type="submit" value="Add Exercise" name="Add Exercise" id="addExerciseButton">
+</fieldset>
+</form>
+<br/>
+
+
+<h2>Exercise Table: </h2>
+<table id="table">
+    <thead>
+        <tr>
+            <th>Name </th>
+            <th>Reps </th>
+            <th>Weight </th>
+            <th>Unit </th>
+            <th>Date </th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {{#if results}}
+            {{#each results}}
+                <tr id={{this.id}}>
+                    <input type="hidden" id="id" value={{this.id}} />
+                    <td>{{this.name}}</td>
+                    <td>{{this.reps}}</td>
+                    <td>{{this.weight}}</td>
+                {{#if this.unit}}
+                        <td id="lbs">lbs</td>
+
+                    {{else}}
+                        <td id="lbs">kg</td>
+                {{/if}} 
+
+                    <td>{{this.date}}</td>
+
+                    <!--<td>{{this.unit}}</td>-->
+
+                    <td><input type="button" id="edit" value="edit" onclick="function wrapper() { editRow({{this.id}}); }"> </td>
+                    <td><input type="button" id="delete" name="delete" value="delete" onclick="function wrapper() { deleteARow({{@index}}); }"/> </td>
+
+                    <!--<td><input type="button" id="edit" value="edit" onclick="editRow({{@index}})"> </td>
+                    <td><input type="button" id="delete" name="delete" value="delete" onclick="deleteARow({{@index}})"/> </td>-->
+
+                    <!--<td><input type="button" id="edit" value="edit" onclick="editRow({{this.id}})"> </td>
+                    <td><input type="button" id="delete" name="delete" value="delete" onclick="deleteARow({{this.id}})"/> </td>-->
+
+                    <!--<td><input type="button" id="edit" value="edit"> </td>
+                    <td><input type="button" id="delete" name="delete" value="delete"/> </td>-->
+                </tr>
+
+            {{/each}}
+        {{/if}}
+    </tbody>
+
+</table> 
+<br>
+<br>
+
+
+<div id="editForm" style="display: none;">
+    <h2>Edit exercise: </h2>
+
+    <form id="editRowForm">
+
+    <fieldset size="100">
+    <label>Name: </label>
+        <input type="text" name="name" id="editName" size="35"> 
+
+    <label>Reps: </label>
+        <input type="text" name="reps" id="editReps" size="35"> 
+
+    <label>Weight: </label>
+        <input type="text" name="weight" id="editWeight" size="35"><br/><br/>
+
+    <label>Date: </label>
+        <input type="date" name="date" id="editDate" size="35"> <br/> <br/>
+
+    <label for="unit">Unit:  </label> 
+        <input type="radio" id="editlbs" name="unit" value="1" checked>
+        <label for="lbs">lbs</label>
+        <input type="radio" id="editkg" name="unit" value="0">
+        <label for="kg">kg</label> 
+        <br/> <br/>
+        
+        <input type="submit" value="Edit Exercise" name="Edit Exercise" id="editSubmitButton">
+    </fieldset>
+    </form>
+<br/>
+</div>
+
+
+<script src="script.js"></script>
+
+
+
+</html>

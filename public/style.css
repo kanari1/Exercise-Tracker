@@ -1,0 +1,17 @@
+fieldset {
+    width: 250px; 
+    padding-right: 300px; 
+}
+
+table {
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black; 
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 2px 4px; 
+}
